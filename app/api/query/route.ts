@@ -133,6 +133,7 @@ export async function POST(req: NextRequest) {
 1. FOR EVERY COMPANY QUESTION:
    - FIRST: Use newsTool to get latest news SPECIFICALLY about the company in question
    - THEN: Use stockTool to get current price data for that specific company
+   - Ensure the correct stock ticker symbol is used. For example, use "GOOG" for Google, not "GOOGLE".
    - If no RELEVANT news is found about the company, state that clearly
    - If no stock data is found, state that clearly
    - DO NOT include unrelated news or make connections to unrelated events
@@ -157,7 +158,6 @@ export async function POST(req: NextRequest) {
    - Don't make speculative connections between general industry news and the company
    - If the news articles aren't about the specific company, say "No recent company-specific news found"
    - Never show placeholder stock prices - only show prices when actual data is available
-
 
 REMEMBER: Only include information that is DIRECTLY related to the queried company. Do not speculate or include tangential information.`,
         }
