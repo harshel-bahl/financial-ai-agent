@@ -3,16 +3,21 @@
 A real-time financial information assistant that provides stock data and relevant news using natural language queries. The system combines market data from Alpha Vantage with news from NewsAPI, processed through OpenAI's GPT model to deliver contextual financial insights.
 
 ## Architecture 
-mermaid
+```mermaid
 graph TD
-A[Next.js Frontend] --> B[API Route Handler]
-B --> C[OpenAI GPT-3.5]
-C --> D[News Tool]
-C --> E[Stock Tool]
-D --> F[NewsAPI]
-E --> G[Alpha Vantage API]
-C --> H[Response Formatter]
-H --> A
+A[Next.js Frontend] -->|User Query| B[API Route Handler]
+B -->|Process Request| C[OpenAI GPT-3.5]
+C -->|Analyze Query| D[News Tool]
+C -->|Analyze Query| E[Stock Tool]
+D -->|Request| F[NewsAPI]
+E -->|Request| G[Alpha Vantage API]
+F -->|Response| D
+G -->|Response| E
+D -->|Processed News| C
+E -->|Processed Stock Data| C
+C -->|Format Response| H[Response Formatter]
+H -->|Formatted Response| A
+```
 
 ## Key Features
 - Real-time stock price data
